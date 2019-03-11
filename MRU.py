@@ -1,0 +1,46 @@
+from matplotlib import pyplot as plt
+import matplotlib.animation as animation
+from math import sqrt
+import numpy as np
+
+def _update_plot(i, fig, scat):
+    scat.set_offsets(([i, i]))
+    # print("Frames: %d", i)
+    return scat
+
+
+print("Insira a posição inicial: ")
+posicao_inicial = float(input())
+print("Insira a posição final: ")
+posicao_final = float(input())
+print("Insira a velocidade: ")
+velocidade = float(input())
+
+
+fig = plt.figure('MRU')
+
+x = [posicao_inicial] # coordenadas do eixo x, de -50 ate 50
+y = [0] # coordenadas do eixo y, de -50 ate 50
+
+ax = fig.add_subplot(111) # o numero 111 define o tamanho na interface
+ax.grid(True, color = '0.75') # define a cor das linhas dos eixos das coordenadas
+ax.set_xlim([posicao_inicial - 10, posicao_final + 10]) # amplia um intervalo dado no x
+ax.set_ylim([0, ((posicao_final-posicao_inicial) / velocidade) + 10]) # amplia um intervalo dado no x
+
+scat = plt.scatter(posicao_inicial, 0)
+scat.set_alpha(0.5) # seta a cor da bola
+
+# frames: distancia que ele vai percorrer
+# interval: velocidade
+lista = []
+x = posicao_inicial
+y = 0
+for i in range(int( (posicao_final + abs(posicao_inicial) ) / velocidade) * 10):# *10 pra rodar o loop mais vezes e diminuir o tamanho so salto da bola 
+     x += velocidade / 10
+     y += 0.1
+     lista.append([x, y])
+     
+
+anim = animation.FuncAnimation(fig, _update_plot, fargs = (fig, scat), frames = lista, interval = 20)
+
+plt.show()
