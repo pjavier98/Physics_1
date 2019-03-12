@@ -5,9 +5,7 @@ import numpy as np
 
 def _update_plot(i, fig, scat):
     scat.set_offsets(([i, i]))
-    # print("Frames: %d", i)
     return scat
-
 
 print("Insira a posição inicial: ")
 posicao_inicial = float(input())
@@ -21,9 +19,6 @@ if(posicao_final < posicao_inicial):#Caso específico da velocidade ter sido dig
 
 
 fig = plt.figure('MRU')
-
-x = [posicao_inicial] # coordenadas do eixo x, de -50 ate 50
-y = [0] # coordenadas do eixo y, de -50 ate 50
 
 ax = fig.add_subplot(111) # o numero 111 define o tamanho na interface
 ax.grid(True, color = '0.75') # define a cor das linhas dos eixos das coordenadas
@@ -43,7 +38,6 @@ for i in range(int((abs(posicao_final) + abs(posicao_inicial))/abs(velocidade))*
      y += 0.1
      lista.append([x, y])
      
-
 anim = animation.FuncAnimation(fig, _update_plot, fargs = (fig, scat), frames = lista, interval = 60)
 
 plt.show()
