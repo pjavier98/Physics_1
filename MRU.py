@@ -33,7 +33,12 @@ scat.set_alpha(0.5) # seta a cor da bola
 lista = []
 x = posicao_inicial
 y = 0
-for i in range(int((abs(posicao_final) + abs(posicao_inicial))/abs(velocidade))*10):# *10 pra rodar o loop mais vezes e diminuir o tamanho so salto da bola
+if(posicao_final == -posicao_inicial):
+     aux = 2 * abs(posicao_final) * 10
+else:
+    aux = abs(int((posicao_final - posicao_inicial) / velocidade)) * 10
+print(aux)
+for i in range(aux):# *10 pra rodar o loop mais vezes e diminuir o tamanho so salto da bola
      x += velocidade / 10
      y += 0.1
      lista.append([x, y])
