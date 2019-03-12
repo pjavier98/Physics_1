@@ -29,8 +29,7 @@ scat = plt.scatter(posicao_inicial, 0)
 scat.set_alpha(0.5) # seta a cor da bola
 
 if(velocidade != 0):
-     # Caso específico da velocidade ter sido digitada positiva quando deveria ser negativa
-     if(posicao_final < posicao_inicial):
+     if(posicao_final < posicao_inicial): # Caso específico da velocidade ter sido digitada positiva quando deveria ser negativa
           velocidade = -abs(velocidade)
      if(posicao_final == -posicao_inicial): # quando for 500 e -500
           aux = abs(int((2 * posicao_final / velocidade))) * 10
@@ -44,7 +43,6 @@ if(velocidade != 0):
      ax.set_ylim([-1, ((posicao_final - posicao_inicial) / velocidade) + 10]) # amplia um intervalo dado no x
 else :
      ax.set_ylim([-1, 10]) # amplia um intervalo dado no y
-
 
 # frames: distancia que ele vai percorrer
 # interval: velocidade
