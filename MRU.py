@@ -26,15 +26,15 @@ ax.set_ylabel('Time')
 ax.set_xlabel('Space')
 
 scat = plt.scatter(posicao_inicial, 0)
-scat.set_alpha(0.5) # seta a cor da bola
+scat.set_alpha(0.5) # define a cor da bola
 
 if(velocidade != 0):
      if(posicao_final < posicao_inicial): # Caso específico da velocidade ter sido digitada positiva quando deveria ser negativa
           velocidade = -abs(velocidade)
-     if(posicao_final == -posicao_inicial): # quando for 500 e -500
+     if(posicao_final == -posicao_inicial): # Ex: quando for 500 e -500
           aux = abs(int((2 * posicao_final / velocidade))) * 10
           print(aux)
-     else: # quando for -500 e 500
+     else:
           aux = abs(int((posicao_final - posicao_inicial) / velocidade)) * 10
      for i in range(aux):  # *10 pra rodar o loop mais vezes e diminuir o tamanho so salto da bola
           x += velocidade / 10
